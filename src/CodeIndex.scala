@@ -1,3 +1,8 @@
+/* PROJECT: HashTableTester (Scala)					SOURCE: CodeIndex
+ * AUTHOR: Colin MacCreery
+ * DESCRIPTION: 
+ ******************************************************************************/
+
 class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	/********** VALUES ************************************/
 	val ARRAY_SIZE = 440
@@ -10,14 +15,19 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	/********** VARIABLES *********************************/
 	var n = 1
 	var nColl = 0
-	var aPath = 0.0f
 
 	/********** METHODS ***********************************/
 	def insert(code: String) {
 		insert(code, hash(code, whichHF))
 	}
 
-	def finish(printSwitch: Boolean) {
+	def finish(print: Boolean) {
+		// CALCULATE AVERAGE SEARCH PATH
+		var aPath = (((0.0f, 1) /: nHome) {
+			case ((a, i), e) => (a + (e * i), i + 1) })._1
+		aPath /= (nColl + nHome(0))
+
+		// PRINT HEADER AND TABLE INFORMATION
 		pw.println(">> " + whichHF.toUpperCase + " HashFunction, "
 				   + { whichCRA match {
 						   case "linEmb" => "LINEAR / EMBEDDED"
@@ -29,7 +39,8 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 				   + ",  NColl: " + nColl.formatted("%3d")
 				   + ",  average search path: " + aPath.formatted("%4.1f"))
 
-		if(printSwitch) {
+		// PRINT CODE ARRAY (OPTIONALLY WITH LINKS) IF PRINT SWITCH IS TRUE
+		if(print) {
 			whichCRA match {
 				case "linEmb" =>
 					for(e <- countryCodes.zipWithIndex.view(0, MAX_N_HOME_LOC)) {
@@ -47,43 +58,60 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 			
 		}
 
+		// FOOTER
 		pw.println("----------------------------------------------------------\n")
 	}
 
 	/********** PRIVATE METHODS ***************************/
 	private def insert(code: String, loc: Int) {
+		// INSERT INTO EMPTY SPOT IF POSSIBLE
 		if(countryCodes(loc) == "") {
 			countryCodes(loc) = code
+			links(loc) = -1
 			nHome(0) += 1
+
+		// OTHERWISE BRANCH TO RESPECTIVE RECURSIVE FUNCTION
 		} else whichCRA match {
 			case "linEmb" =>
-				nColl += 1
 				linearInsert(code, loc + 1)
-			case "chSep" =>
 				nColl += 1
-				chainInsert(code, MAX_N_HOME_LOC)
+			case "chSep" =>
+				if(links(loc) == -1) links(loc) = MAX_N_HOME_LOC + nColl
+				chainInsert(code, links(loc))
+				nColl += 1
 		}
 	}
 
 	private def linearInsert(code: String, loc: Int) {
-		var curLoc = loc % MAX_N_HOME_LOC
+		// RECURSIVE LINEAR INSERT WITH WRAP-AROUND
 		n += 1
-		if(countryCodes(curLoc) == "") {
-			countryCodes(curLoc) = code
+		if(countryCodes(loc % MAX_N_HOME_LOC) == "") {
+			countryCodes(loc % MAX_N_HOME_LOC) = code
 			nHome(n) += 1
 			n = 0
 		}
-		else linearInsert(code, curLoc + 1)
+		else linearInsert(code, loc % MAX_N_HOME_LOC + 1)
 	}
 
 	private def chainInsert(code: String, loc: Int) {
-		
+		// RECURSIVE CHAIN INSERT, ADDING TO END OF CHAIN
+		n += 1
+		if(countryCodes(loc) == "") {
+			countryCodes(loc) = code
+			links(loc) = -1
+			nHome(n) += 1
+			n = 0
+		} else {
+			if(links(loc) == -1) links(loc) = MAX_N_HOME_LOC + nColl
+			chainInsert(code, links(loc))
+		}
 	}
 
 	private def hash(code: String, whichHF: String): Int = {
+		// RESPECTIVE HASH FUNCTIONS
 		whichHF match {
-			case "times" => code.toArray.foldLeft(1)(_ * _) % MAX_N_HOME_LOC
-			case "plus" => code.toArray.foldLeft(0)(_ + _) % MAX_N_HOME_LOC
+			case "times" => (1 /: code.toArray)(_ * _) % MAX_N_HOME_LOC
+			case "plus" => (0 /: code.toArray)(_ + _) % MAX_N_HOME_LOC
 		}
 	}
 }

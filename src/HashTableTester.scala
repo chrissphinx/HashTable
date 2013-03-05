@@ -1,3 +1,9 @@
+/* PROJECT: HashTableTester (Scala)					SOURCE: HashTableTester
+ * AUTHOR: Colin MacCreery
+ * FILES ACCESSED: RawDataAll.csv, RawDataSample.csv. Log.txt
+ * DESCRIPTION: 
+ ******************************************************************************/
+
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
@@ -7,8 +13,10 @@ object HashTableTester extends App {
 	val whichCRA	= Array("linEmb", "chSep")
 	val whatSizeSam = Array(30, 31)
 	val whatSizeAll = Array(250, 251)
+
 	val logFile		= new java.io.File("log.txt")
 					  if(logFile.exists) logFile.delete
+
 	val pw			= new java.io.PrintWriter(
 					  new java.io.FileWriter(logFile, true), true)
 
