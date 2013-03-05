@@ -1,0 +1,448 @@
+++++++++++++++++++++ data set: SAMPLE ++++++++++++++++++++
+>> TIMES HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc:  30
+>> NHome:   6,  NColl:  20,  average search path:  0.0
+[00] JPN
+[01] DEU
+[02] WSM
+[03] KEN
+[04] QAT
+[05] ZWE
+[06] RUS
+[07] TCA
+[08] ATA
+[09] 
+[10] 
+[11] 
+[12] CHN
+[13] GBR
+[14] VEN
+[15] IND
+[16] XVI
+[17] 
+[18] NIC
+[19] LBN
+[20] FRA
+[21] POL
+[22] EGY
+[23] SOM
+[24] MEX
+[25] USA
+[26] BEL
+[27] HTI
+[28] YEM
+[29] OMN
+----------------------------------------------------------
+
+>> TIMES HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc:  31
+>> NHome:  17,  NColl:   9,  average search path:  0.0
+[00] 
+[01] WSM
+[02] MEX
+[03] HTI
+[04] IND
+[05] DEU
+[06] POL
+[07] GBR
+[08] ZWE
+[09] 
+[10] 
+[11] 
+[12] NIC
+[13] XVI
+[14] YEM
+[15] JPN
+[16] FRA
+[17] QAT
+[18] ATA
+[19] OMN
+[20] BEL
+[21] RUS
+[22] VEN
+[23] USA
+[24] SOM
+[25] CHN
+[26] TCA
+[27] EGY
+[28] LBN
+[29] 
+[30] KEN
+----------------------------------------------------------
+
+>> TIMES HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc:  30
+>> NHome:  10,  NColl:  16,  average search path:  0.0
+[00] JPN 
+[01]  
+[02]  
+[03]  
+[04]  
+[05]  
+[06]  
+[07]  
+[08]  
+[09]  
+[10]  
+[11]  
+[12] CHN 
+[13]  
+[14] XVI 
+[15]  
+[16]  
+[17]  
+[18] NIC 
+[19] SOM 
+[20] FRA 
+[21] EGY 
+[22]  
+[23]  
+[24] MEX 
+[25] USA 
+[26]  
+[27] YEM 
+[28]  
+[29]  
+[30]  
+[31]  
+[32]  
+[33]  
+[34]  
+[35]  
+[36]  
+[37]  
+[38]  
+[39]  
+[40]  
+[41]  
+[42]  
+[43]  
+[44]  
+[45]  
+[46]  
+[47]  
+[48]  
+[49]  
+[50]  
+[51]  
+[52]  
+[53]  
+[54]  
+[55]  
+[56]  
+[57]  
+[58]  
+[59]  
+----------------------------------------------------------
+
+>> TIMES HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc:  31
+>> NHome:  17,  NColl:   9,  average search path:  0.0
+[00]  
+[01] WSM 
+[02] MEX 
+[03]  
+[04]  
+[05] DEU 
+[06] POL 
+[07] GBR 
+[08]  
+[09]  
+[10]  
+[11]  
+[12] NIC 
+[13] XVI 
+[14] YEM 
+[15] JPN 
+[16]  
+[17]  
+[18]  
+[19] OMN 
+[20] BEL 
+[21]  
+[22] VEN 
+[23] USA 
+[24]  
+[25] CHN 
+[26]  
+[27] EGY 
+[28] LBN 
+[29]  
+[30] KEN 
+[31]  
+[32]  
+[33]  
+[34]  
+[35]  
+[36]  
+[37]  
+[38]  
+[39]  
+[40]  
+[41]  
+[42]  
+[43]  
+[44]  
+[45]  
+[46]  
+[47]  
+[48]  
+[49]  
+[50]  
+[51]  
+[52]  
+[53]  
+[54]  
+[55]  
+[56]  
+[57]  
+[58]  
+[59]  
+[60]  
+[61]  
+----------------------------------------------------------
+
+>> PLUS HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc:  30
+>> NHome:  10,  NColl:  16,  average search path:  0.0
+[00] 
+[01] BEL
+[02] 
+[03] 
+[04] ATA
+[05] 
+[06] ZWE
+[07] CHN
+[08] FRA
+[09] GBR
+[10] NIC
+[11] LBN
+[12] IND
+[13] DEU
+[14] WSM
+[15] KEN
+[16] XVI
+[17] RUS
+[18] TCA
+[19] HTI
+[20] EGY
+[21] QAT
+[22] JPN
+[23] USA
+[24] MEX
+[25] VEN
+[26] POL
+[27] YEM
+[28] OMN
+[29] SOM
+----------------------------------------------------------
+
+>> PLUS HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc:  31
+>> NHome:  11,  NColl:  15,  average search path:  0.0
+[00] CHN
+[01] FRA
+[02] GBR
+[03] NIC
+[04] LBN
+[05] IND
+[06] DEU
+[07] KEN
+[08] XVI
+[09] RUS
+[10] TCA
+[11] 
+[12] HTI
+[13] EGY
+[14] QAT
+[15] JPN
+[16] USA
+[17] MEX
+[18] VEN
+[19] POL
+[20] YEM
+[21] OMN
+[22] SOM
+[23] 
+[24] 
+[25] BEL
+[26] 
+[27] 
+[28] ATA
+[29] ZWE
+[30] WSM
+----------------------------------------------------------
+
+>> PLUS HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc:  30
+>> NHome:  15,  NColl:  11,  average search path:  0.0
+[00]  
+[01] BEL 
+[02]  
+[03]  
+[04] ATA 
+[05]  
+[06] ZWE 
+[07] CHN 
+[08] NIC 
+[09] GBR 
+[10] LBN 
+[11]  
+[12] DEU 
+[13]  
+[14]  
+[15]  
+[16]  
+[17]  
+[18]  
+[19] HTI 
+[20] QAT 
+[21]  
+[22] JPN 
+[23] USA 
+[24] MEX 
+[25] POL 
+[26]  
+[27]  
+[28]  
+[29] SOM 
+[30]  
+[31]  
+[32]  
+[33]  
+[34]  
+[35]  
+[36]  
+[37]  
+[38]  
+[39]  
+[40]  
+[41]  
+[42]  
+[43]  
+[44]  
+[45]  
+[46]  
+[47]  
+[48]  
+[49]  
+[50]  
+[51]  
+[52]  
+[53]  
+[54]  
+[55]  
+[56]  
+[57]  
+[58]  
+[59]  
+----------------------------------------------------------
+
+>> PLUS HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc:  31
+>> NHome:  16,  NColl:  10,  average search path:  0.0
+[00] CHN 
+[01] NIC 
+[02] GBR 
+[03] LBN 
+[04]  
+[05] DEU 
+[06]  
+[07]  
+[08]  
+[09]  
+[10]  
+[11]  
+[12] HTI 
+[13] QAT 
+[14]  
+[15] JPN 
+[16] USA 
+[17] MEX 
+[18] POL 
+[19]  
+[20]  
+[21]  
+[22] SOM 
+[23]  
+[24]  
+[25] BEL 
+[26]  
+[27]  
+[28] ATA 
+[29] ZWE 
+[30] WSM 
+[31]  
+[32]  
+[33]  
+[34]  
+[35]  
+[36]  
+[37]  
+[38]  
+[39]  
+[40]  
+[41]  
+[42]  
+[43]  
+[44]  
+[45]  
+[46]  
+[47]  
+[48]  
+[49]  
+[50]  
+[51]  
+[52]  
+[53]  
+[54]  
+[55]  
+[56]  
+[57]  
+[58]  
+[59]  
+[60]  
+[61]  
+----------------------------------------------------------
+
+++++++++++++++++++++ data set: ALL +++++++++++++++++++++++
+>> TIMES HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc: 250
+>> NHome:  97,  NColl: 142,  average search path:  0.0
+----------------------------------------------------------
+
+>> TIMES HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc: 251
+>> NHome: 120,  NColl: 119,  average search path:  0.0
+----------------------------------------------------------
+
+>> TIMES HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc: 250
+>> NHome: 112,  NColl: 127,  average search path:  0.0
+----------------------------------------------------------
+
+>> TIMES HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc: 251
+>> NHome: 148,  NColl:  91,  average search path:  0.0
+----------------------------------------------------------
+
+>> PLUS HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc: 250
+>> NHome:  28,  NColl: 211,  average search path:  0.0
+----------------------------------------------------------
+
+>> PLUS HashFunction, LINEAR / EMBEDDED CollisionRes
+>>    MaxNHomeLoc: 251
+>> NHome:  28,  NColl: 211,  average search path:  0.0
+----------------------------------------------------------
+
+>> PLUS HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc: 250
+>> NHome:  52,  NColl: 187,  average search path:  0.0
+----------------------------------------------------------
+
+>> PLUS HashFunction, CHAINING / SEPARATE CollisionRes
+>>    MaxNHomeLoc: 251
+>> NHome:  52,  NColl: 187,  average search path:  0.0
+----------------------------------------------------------
+

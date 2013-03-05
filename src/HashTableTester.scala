@@ -22,16 +22,23 @@ object HashTableTester extends App {
 		// LOCALS
 		val countryCodes = ArrayBuffer.empty[String]
 		var data = Array.ofDim[String](15)
+		val headFormat  = suffix match {
+			case "Sample" => "SAMPLE "
+			case "All" => "ALL +++"
+		}
 
+		// DATA SET HEADER
 		pw.println("++++++++++++++++++++ data set: "
-				 + suffix.formatted("%1$-7s") + "++++++++++++++++++++")
+				   + headFormat + "++++++++++++++++++++")
 
+		// GET LINES FROM FILE AND SPLIT THEM
 		Source.fromFile("RawData" + suffix + ".csv", "ISO-8859-1")
 						.getLines().foreach(l => { 
 			data = ",".r split l
 			countryCodes += data(1)
 		})
 
+		// DO EVERY COMBINATION WITH A CODE INDEX OBJECT
 		for(h <- hashes; r <- resolutions; s <- sizes) {
 			val codeIndex = new CodeIndex(h, r, s)
 			for(c <- countryCodes.toArray)
