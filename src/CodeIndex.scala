@@ -1,12 +1,31 @@
 /* PROJECT: HashTableTester (Scala)					SOURCE: CodeIndex
  * AUTHOR: Colin MacCreery
- * DESCRIPTION: 
+ * DESCRIPTION: This is the class that stores and manages the list of country codes
+ *				as a hash table.
+ *
+ *				Because Scala is a functional language there are a lot of neat
+ *				ways to manipulate arrays instead of the boring for-each loop. The
+ *				class utilizes foldLeft (the /: operator) to accumulate a value when
+ *				needed as in calculating the average search path (aPath) or the
+ *				hash value for the code.
+ *
+ *				The method .zipWithIndex() will create an array of tuples with the
+ *				indicies of the array in the second place and the data in the first.
+ *				Accessing part of tuple is done with ._# on the end of the element.
+ *
+ *				And the .view() method allows you to "look at" just one section of
+ *				an array, this is used to print only the relevant range for the
+ *				sample data instead of the entire 440 entry array.
+ *
+ *				The Java StringFormatter class is available to primitives in Scala
+ *				through implicit conversion (.formatted()) as is used frequently to
+ *				format output correctly.
  ******************************************************************************/
 
 class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	/********** VALUES ************************************/
 	val ARRAY_SIZE = 440
-	val countryCodes = Array.fill(ARRAY_SIZE){""}
+	val codes = Array.fill(ARRAY_SIZE){""}
 	val links = Array.ofDim[Int](ARRAY_SIZE)
 	val nHome = Array.ofDim[Int](220)
 	val pw = new java.io.PrintWriter(
@@ -43,11 +62,11 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 		if(print) {
 			whichCRA match {
 				case "linEmb" =>
-					for(e <- countryCodes.zipWithIndex.view(0, MAX_N_HOME_LOC)) {
+					for(e <- codes.zipWithIndex.view(0, MAX_N_HOME_LOC)) {
 						pw.println("[" + e._2.formatted("%02d") + "] " + e._1)
 					}
 				case "chSep" =>
-					for(e <- countryCodes.zipWithIndex.view(0, MAX_N_HOME_LOC * 2)){
+					for(e <- codes.zipWithIndex.view(0, MAX_N_HOME_LOC * 2)){
 						pw.println("[" + e._2.formatted("%02d") + "] " + e._1 + " "
 								   + { if(links(e._2) != 0)
 										   links(e._2).formatted("%2d")
@@ -65,8 +84,8 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	/********** PRIVATE METHODS ***************************/
 	private def insert(code: String, loc: Int) {
 		// INSERT INTO EMPTY SPOT IF POSSIBLE
-		if(countryCodes(loc) == "") {
-			countryCodes(loc) = code
+		if(codes(loc) == "") {
+			codes(loc) = code
 			links(loc) = -1
 			nHome(0) += 1
 
@@ -85,8 +104,8 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	private def linearInsert(code: String, loc: Int) {
 		// RECURSIVE LINEAR INSERT WITH WRAP-AROUND
 		n += 1
-		if(countryCodes(loc % MAX_N_HOME_LOC) == "") {
-			countryCodes(loc % MAX_N_HOME_LOC) = code
+		if(codes(loc % MAX_N_HOME_LOC) == "") {
+			codes(loc % MAX_N_HOME_LOC) = code
 			nHome(n) += 1
 			n = 0
 		}
@@ -96,8 +115,8 @@ class CodeIndex(whichHF: String, whichCRA: String, MAX_N_HOME_LOC: Int) {
 	private def chainInsert(code: String, loc: Int) {
 		// RECURSIVE CHAIN INSERT, ADDING TO END OF CHAIN
 		n += 1
-		if(countryCodes(loc) == "") {
-			countryCodes(loc) = code
+		if(codes(loc) == "") {
+			codes(loc) = code
 			links(loc) = -1
 			nHome(n) += 1
 			n = 0
