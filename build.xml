@@ -1,0 +1,74 @@
+<project name="HashTableTester" default="dist" basedir=".">
+	<description>
+		simple example build file
+	</description>
+
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="dist"  location="dist"/>
+	<property environment="env"/>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the bin folder used by compile -->
+		<mkdir dir="${bin}"/>
+    <path id="build.classpath">
+      <pathelement location="${env.SCALA_HOME}/lib/scala-library.jar"   />
+    </path>
+    <taskdef resource="scala/tools/ant/antlib.xml">
+      <classpath>
+        <pathelement location="${env.SCALA_HOME}/lib/scala-compiler.jar"   />
+        <pathelement location="${env.SCALA_HOME}/lib/scala-reflect.jar"/>
+        <pathelement location="${env.SCALA_HOME}/lib/scala-library.jar"   />
+      </classpath>
+    </taskdef>
+	</target>
+
+	<target name="build" depends="init"
+		description="compile the source " >
+		<!-- Compile the scala code from ${src} into ${bin} -->
+    <scalac srcdir="${src}"
+            destdir="${bin}"
+            classpathref="build.classpath">
+      <include name="*.scala"   />
+    </scalac>
+	</target>
+
+	<target name="dist" depends="build"
+		description="package the jar" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}"/>
+
+		<!-- Put everything in ${bin} into the jar file -->
+		<jar jarfile="${dist}/${ant.project.name}-no-scala.jar" basedir="${bin}">
+			<manifest>
+				<attribute name="Main-Class" value="${ant.project.name}"/>
+			</manifest>
+		</jar>
+		<taskdef resource="proguard/ant/task.properties"
+	         classpath="/usr/local/Cellar/proguard/4.8/libexec/proguard.jar" />
+		<proguard>
+			-injars      ${dist}/${ant.project.name}-no-scala.jar
+			-injars      /usr/local/Cellar/scala/2/libexec/lib/scala-library.jar
+			-outjars     ${ant.project.name}.jar
+			-libraryjars ${java.home}/lib/rt.jar
+
+			-dontwarn scala.**
+			-dontnote
+
+			-keepclasseswithmembers public class * {
+			    public static void main(java.lang.String[]);
+			}
+		</proguard>
+	</target>
+
+	<target name="clean"
+		description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${bin}"/>
+		<delete dir="${dist}"/>
+		<delete file="${ant.project.name}.jar"/>
+	</target>
+</project>
